@@ -17,6 +17,25 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+# Add steps to build the project
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '5.x'
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
+- script: |
+    dotnet build --configuration Release
+  displayName: 'Build project'
+
+# Publish the build artifacts
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(System.DefaultWorkingDirectory)/**/bin/Release/net5.0/publish'
+    artifactName: 'drop'
+    publishLocation: 'Container'
+
+# Deploy to Azure Web App
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Azure for Students(afbda82c-bc14-483a-afc6-1911cca0ae53)'
@@ -25,4 +44,4 @@ steps:
     deployToSlotOrASE: true
     resourceGroupName: 'HELM-OTAP-TEST'
     slotName: 'production'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(Pipeline.Workspace)/drop/**/*.zip'
