@@ -8,6 +8,8 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+
+steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
@@ -17,7 +19,6 @@ pool:
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     RuntimeStack: 'PHP|7.4'
 
-steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
