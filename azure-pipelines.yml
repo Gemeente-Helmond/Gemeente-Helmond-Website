@@ -8,7 +8,7 @@ trigger:
 
 variables:
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'ed5f2dad-bcd6-4711-9c40-da9c10d50f01'
+  azureSubscription: 'Azure for Students(afbda82c-bc14-483a-afc6-1911cca0ae53)'
 
   # Web app name
   webAppName: 'HELM-OTAP-TEST'
