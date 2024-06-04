@@ -1,25 +1,11 @@
-# PHP as Linux Web App on Azure
-# Build, package and deploy your PHP project to Azure Linux Web App.
-# Add steps that run tests and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/php
-
 trigger:
 - main
 
 variables:
-  # Azure Resource Manager connection created during pipeline creation
   azureSubscription: 'Azure for Students(afbda82c-bc14-483a-afc6-1911cca0ae53)'
-
-  # Web app name
   webAppName: 'HELM-OTAP-TEST'
-
-  # Agent VM image name
   vmImageName: 'ubuntu-latest'
-
-  # Environment name
   environmentName: 'HELM-OTAP-TEST'
-
-  # Root folder under which your composer.json file is available.
   rootFolder: $(System.DefaultWorkingDirectory)
 
 stages:
@@ -41,11 +27,15 @@ stages:
         php -version
       workingDirectory: $(rootFolder)
       displayName: 'Use PHP version $(phpVersion)'
-
+      
+    # Add a step to list the contents of the working directory
+    - script: ls -la $(rootFolder)
+      displayName: 'List contents of root folder'
+      
     - script: composer install --no-interaction --prefer-dist
       workingDirectory: $(rootFolder)
       displayName: 'Composer install'
-
+      
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
@@ -54,7 +44,7 @@ stages:
         archiveType: zip
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
         replaceExistingArchive: true
-
+        
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       displayName: 'Upload package'
       artifact: drop
