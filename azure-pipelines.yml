@@ -10,13 +10,24 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- script: |
+    apt-get update
+    apt-get install -y zip
+    zip -r my_php_project.zip .
+  displayName: 'Compress PHP project'
+
+- script: |
+    echo "Checking if the zip file was created..."
+    ls -la $(System.DefaultWorkingDirectory)
+  displayName: 'Check zip file'
+
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'IMAD HELM OTAP'
     appType: 'webAppLinux'
     WebAppName: 'HELM-SITE-TEST'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/my_php_project.zip'
     RuntimeStack: 'PHP|7.4'
 
 - script: echo Hello, world!
