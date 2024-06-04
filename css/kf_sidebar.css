@@ -1,0 +1,9 @@
+@import url(gm_sidebar.css);
+
+.kif_wrap { width: 100%; }
+.kif_col { display: inline; width: 31%; float: left; }
+.kif_col strong, .kif_col a { display: block; width: 100%; text-align: center; }
+
+#simplemodal-container a.modalCloseImg {
+    background: url(../../imgs/modal/close_bckgrnd_dutch.gif) no-repeat !important; 
+}

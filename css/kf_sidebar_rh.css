@@ -1,0 +1,11 @@
+@import url(kf_sidebar.css);
+
+.gm_sidebar_rh { right:0; position:fixed; top:25%; z-index:1001; }
+
+/* IE6 hack */
+* html .gm_sidebar_rh { 
+	position: absolute !important;
+}
+
+/* IE fix for auto-hidden scrollbars */
+BODY { -ms-overflow-style: scrollbar; }

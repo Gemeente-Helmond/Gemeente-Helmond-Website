@@ -1,0 +1,49 @@
+.gm_sidebar {
+    display: block !important;
+}
+
+    .gm_sidebar A.gm_sidebar_anchor {
+        cursor: pointer;
+        text-decoration: none !important;
+    }
+
+    .gm_sidebar IMG {
+        border: none;
+    }
+
+IFRAME#gm_iframe {
+    border: 0;
+}
+
+
+#selector-prompt {
+    position: absolute;
+    background-color: blue;
+    color:#fff;
+    transition:all 300ms ease;
+    padding: 2px 2px 2px 4px;
+}
+
+#selector-top, #selector-bottom {
+    background: blue;
+    height:3px;
+    position: absolute;
+    transition:all 300ms ease;
+}
+
+#selector-left, #selector-right {
+    background: blue;
+    width:3px;
+    position: absolute;
+    transition:all 300ms ease;
+}
+
+
+
+@media print
+{    
+    .gm_sidebar, .gm_sidebar *
+    {
+        display: none !important;
+    }
+}

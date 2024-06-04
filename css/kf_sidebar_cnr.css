@@ -1,0 +1,11 @@
+@import url(kf_sidebar.css);
+
+.gm_sidebar_cnr { right:0; position:fixed; bottom:0; z-index:10001; clip-path: polygon(100% 0, 0% 100%, 100% 100%); }
+
+/* IE6 hack */
+* html .gm_sidebar_cnr { 
+	position: absolute !important;
+}
+
+/* IE fix for auto-hidden scrollbars */
+BODY { -ms-overflow-style: scrollbar; }

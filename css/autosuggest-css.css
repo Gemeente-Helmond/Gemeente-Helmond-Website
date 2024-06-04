@@ -1,0 +1,43 @@
+/*the container must be positioned relative:*/ 
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: absolute;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.text-ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.position-relative{
+  position: relative;
+}
+.bg-white{
+  background-color:white;
+}
+
+.searchresults small.badge{margin-bottom:10px;}
+
+/* Modal */
+.navbar-header-links #searchpageinputautocomplete-list a, .navbar-header-links #searchpageinputautocomplete-list span{color: black;}
+#searchpageinputautocomplete-list{
+  width: 300px;
+}
+#searchpageinputautocomplete-list .btn {
+    border-color: #CC0000;
+    background-color: #CC0000;
+    color: #FFFFFF;
+  margin-left:0;
+  width:100%;
+}
+#searchpageinputautocomplete-list h2, #searchpageinputautocomplete-list .list-group-item{padding-left: 10px;}
+#searchpageinputautocomplete-list .btn{padding: 10px;}
+.bigsearch #searchpageinputautocomplete-list{width: 100%;}
