@@ -10,6 +10,19 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'IMAD HELM OTAP'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      # Check if the web app exists
+      if ! az webapp show --resource-group YourResourceGroup --name HELM-SITE-TEST; then
+        # Create the web app if it doesn't exist
+        az webapp create --resource-group YourResourceGroup --plan YourAppServicePlan --name HELM-SITE-TEST --runtime 'PHP|7.4' --deployment-local-git
+      fi
+  displayName: 'Create web app if not exists'
+
 - script: |
     apt-get update
     apt-get install -y zip
