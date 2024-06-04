@@ -2,6 +2,14 @@
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
+    azureSubscription: 'HELM OTAP TEST Serivice connection'
+    appType: 'webAppLinux'
+    WebAppName: 'HELM-SITE-TEST'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'PHP|7.4'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
     azureSubscription: 'Azure for Students(1)(afbda82c-bc14-483a-afc6-1911cca0ae53)'
     appType: 'webAppLinux'
     WebAppName: 'HELM-SITE-TEST'
