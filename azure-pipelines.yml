@@ -5,6 +5,11 @@
 
 trigger:
 - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Service Principle OTAP TEST'
@@ -12,10 +17,7 @@ trigger:
     appName: 'HELM-OTAP-TEST'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
     runtimeStack: 'PHP|7.4'
-pool:
-  vmImage: ubuntu-latest
 
-steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
