@@ -8,6 +8,8 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+
+steps:
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'HELM OTAP TEST Serivice connection'
@@ -15,9 +17,6 @@ pool:
     appName: 'HELM-SITE-TEST'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
     runtimeStack: 'PHP|7.4'
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
